@@ -1,4 +1,4 @@
-# Personal Diary Management System
+# Personal Diary
 
 A Java console-based application that allows users to securely manage personal diary entries with password authentication, date-based search, favorite entries, and dynamic storage using Object-Oriented Programming (OOP) concepts.
 
