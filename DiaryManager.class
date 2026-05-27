@@ -1,0 +1,124 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.text.SimpleDateFormat;
+import java.util.Scanner;
+
+class DiaryManager {
+   String date;
+   private Diary diary = new Diary();
+   private Scanner scanner;
+   private String password = "1234";
+
+   public DiaryManager() {
+      this.scanner = new Scanner(System.in);
+   }
+
+   public void showMenu() {
+      int var1;
+      do {
+         System.out.println("\n Menu");
+         System.out.println("1. Add New Entry");
+         System.out.println("2. Search Entry by ID");
+         System.out.println("3. Display All Entries");
+         System.out.println("4. delete entries");
+         System.out.println("5. markAsFavoriteEntries");
+         System.out.println("6. viewFavoriteEntries");
+         System.out.println("7. Exit \n");
+         System.out.print("Enter your choice: ");
+         var1 = this.scanner.nextInt();
+         this.scanner.nextLine();
+         switch (var1) {
+            case 1:
+               this.addNewEntry();
+               break;
+            case 2:
+               this.searchEntryBydate();
+               break;
+            case 3:
+               this.diary.displayAllEntries();
+               break;
+            case 4:
+               this.deleteEntryById();
+               break;
+            case 5:
+               this.markEntryAsFavorite();
+               break;
+            case 6:
+               this.diary.viewFavoriteEntries();
+               break;
+            case 7:
+               System.out.println("Exiting... Thank you for using the Diary .");
+               break;
+            default:
+               System.out.println("Invalid choice. Please try again.");
+         }
+      } while(var1 != 7);
+
+   }
+
+   private void addNewEntry() {
+      System.out.print("Enter entry ID: ");
+      int var1 = this.scanner.nextInt();
+      this.scanner.nextLine();
+
+      while(true) {
+         System.out.print("Enter date (YYYY-MM-DD): ");
+         String var2 = this.scanner.nextLine();
+         if (this.isValidDate(var2)) {
+            System.out.print("Enter content: ");
+            var2 = this.scanner.nextLine();
+            System.out.print("Enter mood: ");
+            String var3 = this.scanner.nextLine();
+            DiaryEntry var4 = new DiaryEntry(var1, this.date, var2, var3);
+            this.diary.addEntry(var4);
+            return;
+         }
+
+         System.out.println("Invalid date format. Please try again.");
+      }
+   }
+
+   private void searchEntryBydate() {
+      System.out.print("Enter entry Date to search(YYYY-MM-DD): ");
+      String var1 = this.scanner.nextLine();
+      if (!this.isValidDate(var1)) {
+         System.out.println("Invalid date format. Please try again.");
+      } else {
+         DiaryEntry var2 = this.diary.searchEntry(var1);
+         if (var2 != null) {
+            var2.displayEntry();
+         } else {
+            System.out.println("No entry found with Date: " + var1);
+         }
+
+      }
+   }
+
+   private void markEntryAsFavorite() {
+      System.out.print("Enter entry date (YYYY-MM-DD) to mark as favorite: ");
+      String var1 = this.scanner.nextLine();
+      this.diary.markAsFavorite(var1);
+   }
+
+   private boolean isValidDate(String var1) {
+      if (var1 != null && !var1.isEmpty()) {
+         try {
+            SimpleDateFormat var2 = new SimpleDateFormat("YYYY-MM-DD");
+            var2.setLenient(false);
+            var2.parse(var1);
+            return true;
+         } catch (Exception var3) {
+            System.out.println("Invalid date format: " + var1 + ". Error: " + var3.getMessage());
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private void deleteEntryById() {
+      System.out.print("Enter entry ID to delete: ");
+      int var1 = this.scanner.nextInt();
+      this.scanner.nextLine();
+      this.diary.deleteEntry(var1);
+   }
+}
