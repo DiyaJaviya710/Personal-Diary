@@ -46,18 +46,6 @@ A Java console-based application that allows users to securely manage personal d
    ```
    1234
    ```
-
-## Learning Objectives
-
-This project demonstrates:
-
-- Object-Oriented Programming
-- Array Operations
-- Dynamic Memory Management
-- Date Validation
-- Menu-Driven Programming
-- Java Console Applications
-
 ## Future Enhancements
 
 - File Handling
@@ -66,9 +54,3 @@ This project demonstrates:
 - Multiple User Accounts
 - Password Encryption
 - GUI using Java Swing/JavaFX
-
-## Author
-
-**DIYA JAVIYA**
-
-Personal Diary Management System developed for learning Java and Data Structures.
