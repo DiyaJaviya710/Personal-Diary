@@ -1,0 +1,35 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+import java.util.Scanner;
+
+public class personalDiary {
+   public personalDiary() {
+   }
+
+   public static void main(String[] var0) {
+      DiaryManager var1 = new DiaryManager();
+      Scanner var2 = new Scanner(System.in);
+      System.out.println("*");
+      int var3 = 3;
+
+      while(var3 > 0) {
+         System.out.print("Enter the password to access your diary: ");
+         String var4 = var2.nextLine();
+         if (var4.equals("1234")) {
+            System.out.println("your password is corrected");
+            break;
+         }
+
+         --var3;
+         System.out.println("Invalid password. Attempts left: " + var3);
+         if (var3 == 0) {
+            System.out.println("Access denied!");
+            return;
+         }
+      }
+
+      System.out.println("--------------------------------------------------------------");
+      System.out.println("Welcome to your Personal Diary!");
+      System.out.println("--------------------------------------------------------------");
+      var1.showMenu();
+   }
+}
