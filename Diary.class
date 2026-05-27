@@ -1,0 +1,101 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+class Diary {
+   private DiaryEntry[] entries = new DiaryEntry[100];
+   private int entryCount = 0;
+
+   public Diary() {
+   }
+
+   private void resizeArray() {
+      DiaryEntry[] var1 = new DiaryEntry[this.entries.length * 2];
+      System.arraycopy(this.entries, 0, var1, 0, this.entries.length);
+      this.entries = var1;
+      System.out.println("Array resized to " + this.entries.length);
+   }
+
+   public void addEntry(DiaryEntry var1) {
+      if (this.entryCount == this.entries.length) {
+         this.resizeArray();
+      }
+
+      this.entries[this.entryCount] = var1;
+      ++this.entryCount;
+      System.out.println("Entry added successfully!");
+   }
+
+   public DiaryEntry searchEntry(String var1) {
+      for(int var2 = 0; var2 < this.entryCount; ++var2) {
+         if (this.entries[var2].getDate().equals(var1)) {
+            return this.entries[var2];
+         }
+      }
+
+      return null;
+   }
+
+   public void displayAllEntries() {
+      if (this.entryCount == 0) {
+         System.out.println("No entries found.");
+      } else {
+         for(int var1 = 0; var1 < this.entryCount; ++var1) {
+            this.entries[var1].displayEntry();
+         }
+      }
+
+   }
+
+   public void deleteEntry(int var1) {
+      if (this.entries != null && this.entryCount > 0) {
+         boolean var2 = false;
+
+         for(int var3 = 0; var3 < this.entryCount; ++var3) {
+            if (this.entries[var3].getEntryId() == var1) {
+               for(int var4 = var3; var4 < this.entryCount - 1; ++var4) {
+                  this.entries[var4] = this.entries[var4 + 1];
+               }
+
+               this.entries[this.entryCount - 1] = null;
+               --this.entryCount;
+               System.out.println("Entry deleted successfully!");
+               var2 = true;
+               break;
+            }
+         }
+
+         if (!var2) {
+            System.out.println("No entry found with ID: " + var1);
+         }
+
+      } else {
+         System.out.println("No entries available to delete.");
+      }
+   }
+
+   public void markAsFavorite(String var1) {
+      for(DiaryEntry var5 : this.entries) {
+         if (var5 != null && var5.getDate().equals(var1)) {
+            var5.setFavorite(true);
+            System.out.println("Entry on " + var1 + " marked as favorite!");
+            return;
+         }
+      }
+
+      System.out.println("No entry found with date: " + var1);
+   }
+
+   public void viewFavoriteEntries() {
+      boolean var1 = false;
+
+      for(DiaryEntry var5 : this.entries) {
+         if (var5 != null && var5.isFavorite()) {
+            var5.displayEntry();
+            var1 = true;
+         }
+      }
+
+      if (!var1) {
+         System.out.println("No favorite entries found!");
+      }
+
+   }
+}
