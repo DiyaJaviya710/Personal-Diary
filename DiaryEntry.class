@@ -1,0 +1,83 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+class DiaryEntry {
+   private int entryId;
+   private String date;
+   private String title;
+   private String content;
+   private String mood;
+   private String[] tags;
+   private boolean favorite;
+
+   public DiaryEntry(int var1, String var2, String var3, String var4, String var5, String[] var6) {
+      this.entryId = var1;
+      this.date = var2;
+      this.title = var3;
+      this.content = var4;
+      this.mood = var5;
+      this.tags = var6;
+   }
+
+   public int getEntryId() {
+      return this.entryId;
+   }
+
+   public String getDate() {
+      return this.date;
+   }
+
+   public void setDate(String var1) {
+      this.date = var1;
+   }
+
+   public String getTitle() {
+      return this.title;
+   }
+
+   public void setTitle(String var1) {
+      this.title = var1;
+   }
+
+   public String getContent() {
+      return this.content;
+   }
+
+   public void setContent(String var1) {
+      this.content = var1;
+   }
+
+   public String getMood() {
+      return this.mood;
+   }
+
+   public void setMood(String var1) {
+      this.mood = var1;
+      this.mood = var1;
+   }
+
+   public String[] gettags() {
+      return this.tags;
+   }
+
+   public void settags(String[] var1) {
+      this.tags = var1;
+   }
+
+   public boolean isFavorite() {
+      return this.favorite;
+   }
+
+   public void setFavorite(boolean var1) {
+      this.favorite = var1;
+   }
+
+   public void displayEntry() {
+      System.out.println("---------------------------");
+      System.out.println("Entry ID: " + this.entryId);
+      System.out.println("Date: " + this.date);
+      System.out.println("Title: " + this.title);
+      System.out.println("Content: " + this.content);
+      System.out.println("Mood: " + this.mood);
+      System.out.println("Tags :" + String.valueOf(this.tags));
+      System.out.println("---------------------------");
+   }
+}
